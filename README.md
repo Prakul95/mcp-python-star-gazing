@@ -2,7 +2,7 @@
 
 This project implements a **Model Context Protocol (MCP)** server that provides information about upcoming **lunar eclipses** using the [`skyfield`](https://rhodesmill.org/skyfield/) astronomy library.
 
-Built with [FastMCP](https://github.com/ContextualAI/mcp), this server offers a tool endpoint to compute lunar eclipses between two ISO 8601 timestamps.
+Built with [FastMCP](https://github.com/modelcontextprotocol/python-sdk?tab=readme-ov-file#fastmcp-properties), this server offers a tool endpoint to compute lunar eclipses between two ISO 8601 timestamps.
 
 ---
 
