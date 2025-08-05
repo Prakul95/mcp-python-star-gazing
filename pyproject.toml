@@ -1,0 +1,11 @@
+[project]
+name = "mcp-python-star-gazing"
+version = "0.1.0"
+description = "Star gazing MCP server"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "mcp[cli]>=1.12.3",
+    "requests",
+    "skyfield"
+]
