@@ -41,16 +41,22 @@ This installs:
 - `requests`
 - `skyfield`
 
+## API Key Setup
+
+This project uses the OpenWeatherMap API to fetch real weather data. You'll need to:
+
+1. Sign up for a free account at [OpenWeatherMap](https://openweathermap.org/api)
+2. Get your API key from the dashboard
+3. Set the environment variable:
+
+```sh
+export OPENWEATHER_API_KEY=your_api_key_here
+```
+
 ### 4. Run the MCP server
 
 ```bash
-mcp run mcp_star_gazing.py
-```
-
-You should see:
-```
-[mcp] Running server...
-[mcp] Available tools: get_lunar_eclipse
+mcp dev mcp_star_gazing.py
 ```
 
 ---
@@ -116,6 +122,36 @@ load = Loader('/tmp/skyfield')
 You may update this path in `mcp_star_gazing.py` for caching or persistent storage.
 
 ---
+
+For adding the tool to Claude update the config as:
+
+```json
+{
+  "mcpServers": {
+    "star-gazing": {
+      "command": "uv",
+      "args": ["run", "[...]", "/[PATH_TO_PROJECT]/src/mcp_star_gazing.py"],
+      "env": {
+        "OPENWEATHER_API_KEY": "your_api_key_here"
+      }
+    }
+  }
+}
+```
+(This example is simplified — refer to https://modelcontextprotocol.io/quickstart/user for more details)
+
+And this will live inside the `claude_desktop_config.json` file which you can access via the Developer settings. But you can also take a shortcut and install it right away by running this command (which will just create the entry in the config file for you):
+
+```sh
+mcp install mcp_star_gazing.py
+```
+
+You will need to restart Claude desktop to see the tool in your "search and tools" section.
+
+For options on implementing MCP clients in code:
+
+- https://modelcontextprotocol.io/quickstart/client
+- https://github.com/mcp-use/mcp-use
 
 ## 🧑‍💻 Author
 
